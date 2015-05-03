@@ -1,69 +1,67 @@
-[de new-fvec (Length)  # fvec_t* 
 # buffer creation function
+[de new-fvec (Length)  # fvec_t* 
   (native "libaubio.so" "new_fvec" 'N
-    Lenght ) ]
+    Lenght ]
 
-[de del-fvec (Vector)  # void
 # buffer deletion function
+[de del-fvec (Vector)  # void
   (native "libaubio.so" "del_fvec" NIL
-    Vector ) ]
+    Vector ]
 
+# make a copy of a vector
 [de fvec-copy (Src V)  # void
-### make a copy of a vector
-# Src - source vector
-# V - vector to copy to
   (native "libaubio.so" "fvec_copy" NIL
-    Src V ) ]
+    Src V ]
 
-[de fvec-get-data (V)  # source vector
 # read data from buffer 
+[de fvec-get-data (V)
   (native "libaubio.so" "fvec_get_data" 'N
-    V ) ]
+    V ]
 
-[de fvec-get-sample (V Pos)  # vector, position
 # read sample value in buffer
+[de fvec-get-sample (V Position)
   (native "libaubio.so" "fvec_get_sample" 'N
-    V Pos ) ]
+    V Position ]
 
-[de fvec-rev (V)
 # revert order of vector elements
+[de fvec-rev (V)
   (native "libaubio.so" "fvec_rev" NIL
-    V ) ]
+    V ]
 
-[de fvec-set-all (V Value)
 # set all elements to a given value
+[de fvec-set-all (V Value)
   (native "libaubio.so" "fvec_set_all" NIL
-    V Value) ]
+    V Value ]
 
-[de fvec-set-sample  # void 
 # write sample value in a buffer
-  ( V  # vector to write to
-    Data  # value to write in V->Data[Pos]
-    Pos )  # sample position to write to 
+[de fvec-set-sample (V Data Position)  
   (native "libaubio.so" "fvec_set_sample" NIL
-    V Data Pos ) ]
+    V Data Position ]
 
-[de fvec-weight (V Weight)
 # apply weight to a vector
+[de fvec-weight (V Weight)
 ## If the weight vector is longer that V,
 ## only the first elements are used.
 ## If shorter, the last elements of V are not weighted.
   (native "libaubio.so" "fvec_weight" NIL
-    V Weight ) ]
+    V Weight ]
 
-[de fvec-zeros (V)
 # set all elements to zero
+[de fvec-zeros (V)
   (native "libaubio.so" "fvec_zeros" NIL
-    V ) ]
+    V ]
 
-[de fvec-ones (V)
 # set all elements to ones
+[de fvec-ones (V)
   (native "libaubio.so" "fvec_ones" NIL
-    V ) ]
+    V ]
 
-[de fvec-print (V)
 # print out fvec data 
+[de fvec-print (V)
   (native "libaubio.so" "fvec_print" NIL
-    V ) ]
+    V ]
 
-[de fvec-rev 
+# revert order of vector elements
+[de fvec-rev (V)
+  (native "libaubio.so" "fvec_rev" NIL
+    V ]

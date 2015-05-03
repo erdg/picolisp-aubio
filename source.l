@@ -1,9 +1,13 @@
-
 # If 0 passed as SampleRate, the sample rate of the original file is used.
 [de new-aubio-source (Uri SampleRate HopSize)  # aubio_source_t*
   (native 
     "libaubio.so" "new_aubio_source" 'N
     Uri SampleRate HopSize ]
+
+[de del-aubio-soure (Src)
+  (native
+    "libaubio.so" "del_aubio_source" NIL
+    Src ]
 
 [de aubio-source-close (Src)
   (native 

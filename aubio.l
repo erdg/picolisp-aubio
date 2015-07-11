@@ -136,18 +136,28 @@
 
 
 ## aubio_fft_t -- fast fourier transform object
-  (new-aubio-fft        'N)   # uint_t size
-  (del-aubio-fft        NIL)  # aubio_fft_t *fft
-  (aubio-fft-do         NIL)  # aubio_fft_t *fft, fvec_t *input, cvec_t *spectrum
-  (aubio-fft-rdo        NIL)  # aubio_fft_t *fft, cvec_t *spectrum, fvec_t *output
-  (aubio-fft-do-complex   NIL) # aubio_fft_t *fft, fvec_t *input, fvec_t *compspec
-  (aubio-fft-rdo-complex  NIL) # aubio_fft_t *fft, fvec_t *compspec, fvec_t *output
-  (aubio-fft-get-spectrum NIL) # fvec_t *compspec, cvec_t *spectrum
-  (aubio-fft-get-realimag NIL) # cvec_t *spectrum, fvec_t *compspec
-  (aubio-fft-get-phas   NIL)  # fvec_t *compspec, cvec_t *spectrum
-  (aubio-fft-get-imag   NIL)  # cvec_t *spectrum, fvec_t *compspec
-  (aubio-fft-get-norm   NIL)  # fvec_t *compspec, cvec_t *spectrum
-  (aubio-fft-get-real   NIL)  # cvec_t *spectrum, fvec_t *compspec
+  (new-aubio-fft            'N)   # uint_t size
+  (del-aubio-fft            NIL)  # aubio_fft_t *fft
+  (aubio-fft-do             NIL)  # aubio_fft_t *fft, fvec_t *input, cvec_t *spectrum
+  (aubio-fft-rdo            NIL)  # aubio_fft_t *fft, cvec_t *spectrum, fvec_t *output
+  (aubio-fft-do-complex     NIL)  # aubio_fft_t *fft, fvec_t *input, fvec_t *compspec
+  (aubio-fft-rdo-complex    NIL)  # aubio_fft_t *fft, fvec_t *compspec, fvec_t *output
+  (aubio-fft-get-spectrum   NIL)  # fvec_t *compspec, cvec_t *spectrum
+  (aubio-fft-get-realimag   NIL)  # cvec_t *spectrum, fvec_t *compspec
+  (aubio-fft-get-phas       NIL)  # fvec_t *compspec, cvec_t *spectrum
+  (aubio-fft-get-imag       NIL)  # cvec_t *spectrum, fvec_t *compspec
+  (aubio-fft-get-norm       NIL)  # fvec_t *compspec, cvec_t *spectrum
+  (aubio-fft-get-real       NIL)  # cvec_t *spectrum, fvec_t *compspec
+
+## aubio_source_t -- media source to read blocks of consecutive audio samples from file
+  (new-aubio-source             'N)   # char_t *uri, uint_t samplerate, uint_t hop_size
+  (del-aubio-source             NIL)  # aubio_source_t *source
+  (aubio-source-do              NIL)  # aubio_source_t *source, fvec_t *read_to, uint_t frames_read
+  (aubio-source-do-multi        NIL)  # aubio_source_t *source, fmat_t *read_to, uint_t frames_read
+  (aubio-source-get-samplerate  'I)   # aubio_source_t *source
+  (aubio-source-get-channels    'I)   # aubio_source_t *source
+  (aubio-source-seek            'I)   # aubio_source_t *source, uint_t position
+  (aubio-source-close           NIL)  # aubio_source_t *source 
 ]
 
 

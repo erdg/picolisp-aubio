@@ -117,17 +117,17 @@
 # read data from buffer 
 #
 [de fvec-get-data (Vec)
-  (let @Len (car (struct Vec '(I)))  # get length of buffer
+  (let @Len (car (struct Vec '(I N)))  # get length of buffer
     (struct
       (native `*Aubio "fvec_get_data" 'N  # pointer to struct 
         Vec )
-      (fill '(-1.0 . @Len)) ]
+      (fill '(-1000000 . @Len)) ]
 
 #
 # read sample value in buffer
 #
 [de fvec-get-sample (Vec Position)
-  (native "libaubio.so" "fvec_get_sample" -1.0
+  (native "libaubio.so" "fvec_get_sample" -1000000
     Vec Position ]
 
 #
@@ -160,27 +160,35 @@
 #
 # set all elements to zero
 #
-[de fvec-zeros (Vec)
-  (native "libaubio.so" "fvec_zeros" NIL
-    Vec ]
+(de fvec-zeros (Vec)
+   (ifn Vec
+      NIL
+      (native "libaubio.so" "fvec_zeros" NIL
+         Vec ) ) )
 
 #
 # set all elements to ones
 #
-[de fvec-ones (Vec)
-  (native "libaubio.so" "fvec_ones" NIL
-    Vec ]
+(de fvec-ones (Vec)
+   (ifn Vec
+      NIL
+      (native "libaubio.so" "fvec_ones" NIL
+         Vec ) ) )
 
 #
 # print out fvec data 
 #
-[de fvec-print (Vec)
-  (native "libaubio.so" "fvec_print" NIL
-    Vec ]
+(de fvec-print (Vec)
+   (ifn Vec  # don't call without Vec
+      NIL
+      (native "libaubio.so" "fvec_print" NIL
+         Vec ) ) )
 
 #
 # revert order of vector elements
 #
-[de fvec-rev (Vec)
-  (native "libaubio.so" "fvec_rev" NIL
-    Vec ]
+(de fvec-rev (Vec)
+   (ifn Vec
+      NIL
+      (native "libaubio.so" "fvec_rev" NIL
+         Vec ) ) )
